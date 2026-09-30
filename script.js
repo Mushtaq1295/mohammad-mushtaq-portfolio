@@ -63,16 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScroll(); // Initial check
 
     // ----------------------------------------------------------------------
-    // 2. Mobile Menu Toggle
+    // 2. Mobile Menu Toggle & Overlay
     // ----------------------------------------------------------------------
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const navMenu = document.getElementById('nav-menu');
+    const navOverlay = document.getElementById('nav-overlay');
 
     if (hamburgerBtn && navMenu) {
         function toggleMobileMenu() {
             const isOpen = navMenu.classList.toggle('active');
             hamburgerBtn.classList.toggle('active');
             hamburgerBtn.setAttribute('aria-expanded', isOpen);
+            if (navOverlay) navOverlay.classList.toggle('active', isOpen);
             document.body.style.overflow = isOpen ? 'hidden' : '';
         }
 
@@ -80,10 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.remove('active');
             hamburgerBtn.classList.remove('active');
             hamburgerBtn.setAttribute('aria-expanded', 'false');
+            if (navOverlay) navOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
 
         hamburgerBtn.addEventListener('click', toggleMobileMenu);
+
+        if (navOverlay) {
+            navOverlay.addEventListener('click', closeMobileMenu);
+        }
 
         // Close menu on nav link click
         navLinks.forEach(link => {
@@ -96,6 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeMobileMenu();
             }
         });
+
+        // Close menu on window resize above mobile breakpoint
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        }, { passive: true });
     }
 
     // ----------------------------------------------------------------------
