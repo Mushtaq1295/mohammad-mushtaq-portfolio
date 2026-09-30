@@ -3,7 +3,26 @@
  * Pure Vanilla JavaScript (ES6+)
  */
 
+// ==========================================================================
+// 🚀 Centralized Project Live Application URLs Configuration
+// Replace the placeholder strings below with your actual deployed live URLs.
+// ==========================================================================
+const PROJECT_LIVE_CONFIG = {
+    MEH_AUTOMOTIVES_LIVE_URL: "PASTE_MEH_AUTOMOTIVES_LIVE_URL_HERE",
+    BMS_LIVE_URL: "PASTE_BMS_LIVE_URL_HERE",
+    AI_RESUME_ANALYZER_LIVE_URL: "PASTE_AI_RESUME_ANALYZER_LIVE_URL_HERE",
+    STUDENT_RECORD_PORTAL_LIVE_URL: null // Student Record Portal has no Live button
+};
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Synchronize configured Live URLs to their corresponding DOM action buttons
+    Object.entries(PROJECT_LIVE_CONFIG).forEach(([key, url]) => {
+        const linkElem = document.querySelector(`[data-live-key="${key}"]`);
+        if (linkElem && url) {
+            linkElem.setAttribute('href', url);
+        }
+    });
+
     // ----------------------------------------------------------------------
     // 1. Navigation & Header Scroll Effects
     // ----------------------------------------------------------------------
