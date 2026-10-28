@@ -23,6 +23,14 @@
     --accent-cyan-light: #22d3ee;
     --accent-cyan-glow: rgba(6, 182, 212, 0.2);
 
+    --accent-teal: #14b8a6;
+    --accent-teal-light: #2dd4bf;
+    --accent-teal-glow: rgba(20, 184, 166, 0.2);
+
+    --bg-card-healthcare: rgba(13, 27, 42, 0.78);
+    --bg-card-healthcare-border: rgba(20, 184, 166, 0.22);
+    --bg-card-healthcare-hover-border: rgba(45, 212, 191, 0.5);
+
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
     --text-dim: #64748b;
@@ -1376,32 +1384,231 @@ img, svg {
     gap: 0.75rem;
 }
 
-.link-live-text {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--accent-cyan-light);
-    transition: color var(--transition-fast);
-}
-
-.link-live-text:hover {
-    color: #ffffff;
-}
-
+.link-live-text,
 .link-github-text {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 0.875rem;
+    gap: 0.45rem;
+    font-size: 0.85rem;
     font-weight: 600;
+    padding: 0.55rem 1.05rem;
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    line-height: 1;
+}
+
+.link-live-text {
+    background: rgba(6, 182, 212, 0.12);
+    color: var(--accent-cyan-light);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.link-live-text:hover {
+    background: rgba(6, 182, 212, 0.25);
+    color: #ffffff;
+    border-color: var(--accent-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(6, 182, 212, 0.25);
+}
+
+.link-github-text {
+    background: rgba(99, 102, 241, 0.1);
     color: var(--accent-indigo-light);
-    transition: color var(--transition-fast);
+    border: 1px solid rgba(99, 102, 241, 0.25);
 }
 
 .link-github-text:hover {
+    background: rgba(99, 102, 241, 0.22);
     color: #ffffff;
+    border-color: var(--accent-indigo);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   Healthcare Technology & Research Section
+   -------------------------------------------------------------------------- */
+.healthcare-intro-banner {
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.08) 0%, rgba(15, 23, 42, 0.85) 100%);
+    border: 1px solid var(--bg-card-healthcare-border);
+    border-radius: var(--border-radius);
+    padding: 1.6rem 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.35rem;
+    margin-bottom: 2.5rem;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.healthcare-intro-banner::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--accent-teal), var(--accent-cyan));
+    border-radius: 2px;
+}
+
+.healthcare-banner-icon {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(20, 184, 166, 0.14);
+    border: 1px solid rgba(20, 184, 166, 0.35);
+    color: var(--accent-teal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+    box-shadow: 0 4px 16px var(--accent-teal-glow);
+}
+
+.healthcare-banner-text h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+}
+
+.healthcare-banner-text p {
+    font-size: 0.925rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+.healthcare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 1.75rem;
+}
+
+.healthcare-card {
+    background: var(--bg-card-healthcare);
+    border: 1px solid var(--bg-card-healthcare-border);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+}
+
+.healthcare-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-teal), var(--accent-cyan));
+    opacity: 0.65;
+    transition: opacity var(--transition-fast);
+}
+
+.healthcare-card:hover {
+    border-color: var(--bg-card-healthcare-hover-border);
+    transform: translateY(-6px);
+    box-shadow: 0 14px 35px -5px rgba(20, 184, 166, 0.2), var(--shadow-md);
+}
+
+.healthcare-card:hover::before {
+    opacity: 1;
+}
+
+.healthcare-card-inner {
+    padding: 1.85rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.healthcare-badge-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1.15rem;
+    flex-wrap: wrap;
+}
+
+.healthcare-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--accent-teal-light);
+    background: rgba(20, 184, 166, 0.12);
+    border: 1px solid rgba(20, 184, 166, 0.3);
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+}
+
+.pulse-icon {
+    stroke: var(--accent-teal-light);
+    flex-shrink: 0;
+}
+
+.healthcare-env-pill {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+}
+
+.healthcare-card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+}
+
+.healthcare-card-desc {
+    font-size: 0.94rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1.35rem;
+    flex-grow: 1;
+}
+
+.tech-tag.healthcare-tech {
+    background: rgba(20, 184, 166, 0.09);
+    border: 1px solid rgba(20, 184, 166, 0.25);
+    color: #a7f3d0;
+}
+
+.healthcare-card-footer {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.contribution-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--accent-teal-light);
+    font-weight: 500;
 }
 
 /* --------------------------------------------------------------------------
@@ -1748,6 +1955,16 @@ img, svg {
    16. Responsive Breakpoints & Mobile Optimization
    -------------------------------------------------------------------------- */
 
+/* 1150px - 769px Desktop Nav Spacing Adjustment */
+@media (max-width: 1150px) and (min-width: 769px) {
+    .nav-list {
+        gap: 1.15rem;
+    }
+    .nav-link {
+        font-size: 0.85rem;
+    }
+}
+
 /* 1024px Tablet Landscape & Small Laptops */
 @media (max-width: 1024px) {
     .hero-container {
@@ -1958,6 +2175,38 @@ img, svg {
         padding: 1.4rem;
     }
 
+    .project-card-links {
+        width: 100%;
+    }
+
+    .link-live-text,
+    .link-github-text {
+        flex: 1 1 auto;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Healthcare Technology Responsive */
+    .healthcare-intro-banner {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.35rem;
+    }
+
+    .healthcare-banner-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .healthcare-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .healthcare-card-inner {
+        padding: 1.4rem;
+    }
+
     /* Education & Certifications Responsive */
     .education-grid {
         grid-template-columns: 1fr;
@@ -2156,6 +2405,23 @@ img, svg {
 
     .score-number {
         font-size: 1.4rem;
+    }
+
+    .project-card-links {
+        flex-direction: column;
+    }
+
+    .link-live-text,
+    .link-github-text {
+        width: 100%;
+    }
+
+    .healthcare-card-title {
+        font-size: 1.2rem;
+    }
+
+    .healthcare-intro-banner {
+        padding: 1.15rem 1rem;
     }
 
     .degree-title {

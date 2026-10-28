@@ -5,12 +5,11 @@
 
 // ==========================================================================
 // 🚀 Centralized Project Live Application URLs Configuration
-// Replace the placeholder strings below with your actual deployed live URLs.
 // ==========================================================================
 const PROJECT_LIVE_CONFIG = {
-    MEH_AUTOMOTIVES_LIVE_URL: "PASTE_MEH_AUTOMOTIVES_LIVE_URL_HERE",
-    BMS_LIVE_URL: "PASTE_BMS_LIVE_URL_HERE",
-    AI_RESUME_ANALYZER_LIVE_URL: "PASTE_AI_RESUME_ANALYZER_LIVE_URL_HERE",
+    MEH_AUTOMOTIVES_LIVE_URL: "https://meh-v1-frontend.onrender.com/",
+    BMS_LIVE_URL: "https://bms-v1-eight.vercel.app/",
+    AI_RESUME_ANALYZER_LIVE_URL: null, // Live demo button removed per requirements
     STUDENT_RECORD_PORTAL_LIVE_URL: null // Student Record Portal has no Live button
 };
 
